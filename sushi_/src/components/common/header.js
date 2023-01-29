@@ -4,14 +4,13 @@ import { HiOutlineMenu } from "react-icons/hi";
 import { IoIosClose } from "react-icons/io";
 import { useState, useContext } from "react";
 // import { RegistrationOpenContext } from "../../";
-import { BsWhatsapp } from "react-icons/bs";
+// import { BsWhatsapp } from "react-icons/bs";
 // import { WhatsappModal } from "../social";
 
 const Header = () => {
 //   const { registration } = useContext(RegistrationOpenContext);
 
   const [burgerNav, setBurgerNav] = useState(false);
-  const [showSocial, setShowSocial] = useState(false);
 
   const burgerNavController = () => {
     document.querySelector("html").style.overflowY = !burgerNav
@@ -21,43 +20,22 @@ const Header = () => {
   };
 
   const handleNavItemClick = (path) => {
-    document.getElementById(path).scrollIntoView({ behavior: "smooth" });
+    document.getElementById(path);
   };
 
   const handleBurgerNavItemClick = (path) => {
-    document.getElementById(path).scrollIntoView({ behavior: "smooth" });
+    document.getElementById(path);
     burgerNavController();
   };
 
   const navItems = [
     {
-      name: "Timeline",
-      path: "timeline",
+      name: "Home",
+      path: "Home",
     },
-    {
-      name: "Competition",
-      path: "competition",
-    },
-    {
-      name: "Rules",
-      path: "rules",
-    },
-    {
-      name: "Prizes",
-      path: "prizes",
-    },
-    {
-      name: "Speakers",
-      path: "speakers",
-    },
-    // make avialable after sponsors are finalized
-    // {
-    //   name: "Sponsors",
-    //   path: "sponsors",
-    // },
     {
       name: "Contact",
-      path: "footer",
+      path: "Contact",
     },
   ];
 
@@ -82,43 +60,7 @@ const Header = () => {
             </div>
           );
         })}
-        <div className="flex col col-span-20 pr-7 pl-2">
-          {/* {registration ? (
-            <a
-              class="py-1 px-3 mr-[1.6rem] bg-[#D9D9D9] rounded-sm justify-center items-center text-sm font-normal hover:text-white hover:bg-primary transition duration-300 cursor-pointer"
-              href="https://portal.bashaway.sliitfoss.org/register"
-              target="_blank"
-            >
-              Register
-            </a>
-          ) : (
-            <button
-              class="flex px-2 mr-6 rounded-sm justify-center items-center text-sm font-normal bg-primary cursor-pointer"
-              target="_blank"
-              disabled
-            >
-              <span className="flex items-center">
-                <img
-                  src="/assets/lock.svg"
-                  alt=""
-                  className="p-1 rounded-md text-xs"
-                />
-                <p className="p-1 mt-0.5">Register</p>
-              </span>
-            </button>
-          )} */}
-
-          {/* <button
-            class="flex justify-center items-center py-1 px-3 bg-[#D9D9D9] rounded-sm text-sm font-normal hover:text-white hover:bg-primary transition duration-300 cursor-pointer"
-            onClick={() => {
-              document.querySelector("html").style.overflowY = "hidden";
-              setShowSocial(true)
-            }}
-          >  */}
-            {/* <span className="line-clamp-1">Join the WhatsApp Group</span> <BsWhatsapp className="ml-2"/> */}
-          {/* </button> */}
-          {/* <WhatsappModal showModal={showSocial} toggleShow={setShowSocial}/>  */}
-        </div>
+      
       </div>
       <HiOutlineMenu
         className="fixed top-0 h-8 w-8 text-white right-1 lg:hidden mt-[0.8rem] lg:mt-4 mr-4 lg:mr-2 cursor-pointer"
@@ -136,9 +78,6 @@ const Header = () => {
         />
         <ul className=" mr-auto w-full h-full flex-col flex items-center uppercase justify-center p-8 lg:hidden">
           <li className="h-full flex flex-col justify-between py-20">
-            <div className="w-full">
-              <img src="/assets/bashaway-logo.svg" className="w-56 h-20" />
-            </div>
             {navItems.map((item) => {
               return (
                 <div className="w-full flex flex-col justify-center items-center">

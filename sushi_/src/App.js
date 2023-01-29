@@ -3,21 +3,21 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import logo from './logo.svg';
-import './App.css';
+
 import Landing from './components/common/header';
 
-
-import Home from "./components/pages/home";
+import Home from "./components/pages/Home";
+import AddItem from "./components/pages/AddItem";
 
 function App() {
   return (
     <Router>
-        <Landing>
+        <Landing/>
           <Routes>
           <Route excat path="/admin/dashboard" element={<Home/>} />
+          <Route excat path="/admin/addProduct" element={<AddItem/>} />
           </Routes>
-        </Landing>
+
     </Router>
     
   );
