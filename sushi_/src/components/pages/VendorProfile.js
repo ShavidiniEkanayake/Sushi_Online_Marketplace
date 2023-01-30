@@ -1,16 +1,16 @@
 import React from "react";
-import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
-const AllProduct = () => {
-  const [loading, setLoading] = useState(true);
+const Content = () => {
+    const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios("http://localhost:3001/api/product/viewAll");
+      const result = await axios("http://localhost:3001/api/product/viewProductById?vendorId=63d7746db8316c832afa39db");
       setProduct(result);
       setLoading(false);
       console.log(result);
@@ -33,7 +33,7 @@ const AllProduct = () => {
   } else {
 
   return (
-    <div className="mt-28 " class="row" style={{marginTop:90,marginLeft:200}}>
+    <div className="mt-28" class="row" style={{marginTop:90,marginLeft:200}}>
       <h1 style={{marginLeft:450}}>Product</h1>
       {product.data.Product.map((Project) => (
         <div class="card col-3" style={{margin:20}}>
@@ -44,7 +44,7 @@ const AllProduct = () => {
           </p>
           <Button
             variant="primary"
-            className="my-3 mx-9"
+            className="my-3 mx-9x"
             onClick={() => {
               
             }}
@@ -56,18 +56,19 @@ const AllProduct = () => {
     </div>
   );
       }
-};
 
-const Home = () => {
-  return (
-    <div>
+}
+
+const MyProfile = () => {
+    return (
       <div>
         <div>
-          <AllProduct />
+          <div>
+            <Content />
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
-export default Home;
+  export default MyProfile
