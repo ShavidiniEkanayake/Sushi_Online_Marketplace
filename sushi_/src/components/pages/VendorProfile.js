@@ -10,10 +10,10 @@ const Content = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios("http://localhost:3001/api/product/viewAll");
+      const result = await axios("http://localhost:3001/api/product");
       setProduct(result);
       setLoading(false);
-      console.log(result);
+      console.log(result.data.data);
     };
     fetchData();
   }, []);
@@ -49,7 +49,7 @@ const Content = () => {
               </Button>
         </div>
         
-        {product.data.Product.map((Project) => (
+        {product.data.data.map((Project) => (
           <div class="card col-3" style={{ margin: 20 }}>
             <img
               class="card-img-top"

@@ -19,19 +19,11 @@ const Header = () => {
         className={`w-full flex flex-col md:flex-row justify-between items-center bg-blue-600 p-5 py-3 fixed top-0 z-50 backdrop-blur-[5px] border-b border-white/10 `}
       >
         <div className="w-full md:w-5/12 pl-2 md:pl-12"></div>
-        <div className="hidden lg:flex justify-between items-center w-72 max-w-2xl">
+        <div className="hidden lg:flex justify-between items-center w-a60 max-w-2xl">
           <div>
             <Link to="http://localhost:3000/vendor/dashboard">
-              <span className="px-2 text-nav-links-unselected hover:text-primary transition duration-300 cursor-pointer text-white">
+              <span className="px-2 text-nav-links-unselected hover:text-primary transition duration-300 cursor-pointer text-white"  style={{marginRight:15}}>
                 Home
-              </span>
-            </Link>
-          </div>
-
-          <div>
-            <Link to="http://localhost:3000/vendor/addProduct">
-              <span className="px-2 text-nav-links-unselected hover:text-primary transition duration-300 cursor-pointer text-white">
-                Add Cart
               </span>
             </Link>
           </div>
@@ -65,14 +57,6 @@ const Header = () => {
                 <Link to="http://localhost:3000/vendor/addProduct">
                   <span className="px-2 text-nav-links-unselected hover:text-primary transition duration-300 cursor-pointer text-white">
                     Home
-                  </span>
-                </Link>
-              </div>
-
-              <div>
-                <Link to="http://localhost:3000/vendor/addProduct">
-                  <span className="px-2 text-nav-links-unselected hover:text-primary transition duration-300 cursor-pointer text-white">
-                    Add Cart
                   </span>
                 </Link>
               </div>
