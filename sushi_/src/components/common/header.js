@@ -21,7 +21,7 @@ const Header = () => {
         <div className="w-full md:w-5/12 pl-2 md:pl-12"></div>
         <div className="hidden lg:flex justify-between items-center w-a60 max-w-2xl">
           <div>
-            <Link to="http://localhost:3000/vendor/dashboard">
+            <Link to="http://localhost:3000">
               <span className="px-2 text-nav-links-unselected hover:text-primary transition duration-300 cursor-pointer text-white"  style={{marginRight:15}}>
                 Home
               </span>
@@ -32,6 +32,14 @@ const Header = () => {
             <Link to="http://localhost:3000/vendor/myProfile">
               <span className="px-2 text-nav-links-unselected hover:text-primary transition duration-300 cursor-pointer text-white">
                 My Profile
+              </span>
+            </Link>
+          </div>
+
+          <div>
+            <Link to="http://localhost:3000/register">
+              <span className="px-2 text-nav-links-unselected hover:text-primary transition duration-300 cursor-pointer text-white">
+                Register
               </span>
             </Link>
           </div>
@@ -54,7 +62,7 @@ const Header = () => {
           <ul className=" mr-auto w-full h-full flex-col flex items-center uppercase justify-center p-8 lg:hidden">
             <li className="h-full flex flex-col justify-between py-20">
               <div>
-                <Link to="http://localhost:3000/vendor/addProduct">
+                <Link to="http://localhost:3000">
                   <span className="px-2 text-nav-links-unselected hover:text-primary transition duration-300 cursor-pointer text-white">
                     Home
                   </span>
