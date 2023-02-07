@@ -1,5 +1,5 @@
 import React from "react";
-import { Select, Space, message, Upload, Input } from "antd";
+import { Select, Space, message,Input } from "antd";
 import {
   UploadOutlined,
   EyeTwoTone,

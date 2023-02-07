@@ -14,12 +14,16 @@ import {
 
 const { Dragger } = Upload;
 
-const Add = async (id, name, description, category, price, qty) => {
+const Add = async (id, name, description, category, price, avalilableQTY,image) => {
   const result = await axios.post(
     "http://localhost:3001/api/product",
     {
       name: name,
       description: description,
+      category:category,
+      price:price,
+      avalilableQTY:avalilableQTY,
+      image:image
     }
   );
 
@@ -88,7 +92,7 @@ const Home = () => {
                 />
                 <Space wrap>
                   <Select
-                    placeholder="Category"
+                    placeholder="category"
                     style={{
                       width: 375,
                       marginBottom: 15,
@@ -126,14 +130,14 @@ const Home = () => {
                 />
                 <input
                   type="text"
-                  id="QTY"
+                  id="avalilableQTY"
                   name="QTY"
                   style={{ marginBottom: 15 }}
                   placeholder="Avalilable QTY"
                   class="form-control"
                   required
                 />
-                <Upload {...props}>
+                <Upload {...props} id="image">
                   <Button icon={<UploadOutlined />}>Upload product image</Button>
                 </Upload>
               </div>
@@ -147,13 +151,17 @@ const Home = () => {
             onClick={() => {
               const name = document.getElementById("name").value;
               const description = document.getElementById("description").value;
+              const category = document.getElementById("category").value;
+              const price = document.getElementById("price").value;
+              const avalilableQTY = document.getElementById("avalilableQTY").value;
+              const image = document.getElementById("image").value;
 
               if (name == "") {
                 NotificationManager.warning(
                   "Please enter your product name of "
                 );
               } else {
-                Add(id, name, description);
+                Add(id, name, description,category,price,avalilableQTY,image);
               }
             }}
           >

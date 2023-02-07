@@ -11,6 +11,7 @@ import AddItem from "./components/pages/AddItem";
 import MyProile from "./components/pages/VendorProfile";
 import Register from "./components/pages/Registration";
 import LogIn from "./components/pages/LogIn"
+import BuyerProfile from "./components/pages/BuyerProfile"
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route excat path="/vendor/myProfile" element={<MyProile/>} />
           <Route excat path="/register" element={<Register/>} />
           <Route excat path="/logIn" element={<LogIn/>} />
+          <Route excat path="/buyerProfile" element={<BuyerProfile/>} />
           </Routes>
 
     </Router>
