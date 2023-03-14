@@ -14,23 +14,25 @@ import {
 
 const { Dragger } = Upload;
 
-const Add = async (id, name, description, category, price, avalilableQTY,image) => {
+const Add = async (name, description, price, avalilableQTY) => {
   const result = await axios.post(
-    "http://localhost:3001/api/product",
+    "http://localhost:3001/api/product/addProduct",
     {
       name: name,
       description: description,
-      category:category,
       price:price,
       avalilableQTY:avalilableQTY,
-      image:image
+      
     }
+    
   );
+  console.log(name);
+              
 
   if (result.status == 200) {
     NotificationManager.success("Your Product Added Succesfully");
-    setTimeout(() => {}, 20000);
-    window.location = "";
+    setTimeout(() => {}, 200000);
+    window.location = "http://localhost:3000/";
   } else {
     NotificationManager.error("Your Product Added Unsuccesfully");
   }
@@ -90,7 +92,7 @@ const Home = () => {
                   class="form-control"
                   placeholder="About the product"
                 />
-                <Space wrap>
+                {/* <Space wrap>
                   <Select
                     placeholder="category"
                     style={{
@@ -118,7 +120,7 @@ const Home = () => {
                       },
                     ]}
                   />
-                </Space>
+                </Space> */}
                 <input
                   type="text"
                   id="price"
@@ -131,15 +133,15 @@ const Home = () => {
                 <input
                   type="text"
                   id="avalilableQTY"
-                  name="QTY"
+                  name="avalilableQTY"
                   style={{ marginBottom: 15 }}
                   placeholder="Avalilable QTY"
                   class="form-control"
                   required
                 />
-                <Upload {...props} id="image">
+                {/* <Upload {...props} id="image">
                   <Button icon={<UploadOutlined />}>Upload product image</Button>
-                </Upload>
+                </Upload> */}
               </div>
             </div>
           </div>
@@ -151,17 +153,18 @@ const Home = () => {
             onClick={() => {
               const name = document.getElementById("name").value;
               const description = document.getElementById("description").value;
-              const category = document.getElementById("category").value;
+              // const category = document.getElementById("category").value;
               const price = document.getElementById("price").value;
               const avalilableQTY = document.getElementById("avalilableQTY").value;
-              const image = document.getElementById("image").value;
+              // const image = document.getElementById("image").value;
+              
 
               if (name == "") {
                 NotificationManager.warning(
                   "Please enter your product name of "
                 );
               } else {
-                Add(id, name, description,category,price,avalilableQTY,image);
+                Add( name, description,price,avalilableQTY);
               }
             }}
           >

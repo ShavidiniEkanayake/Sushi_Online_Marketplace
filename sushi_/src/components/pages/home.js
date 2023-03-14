@@ -22,13 +22,14 @@ const AllProduct = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios("http://localhost:3001/api/product");
+      const result = await axios("http://localhost:3001/api/product/getall");
       setProduct(result);
       setLoading(false);
       console.log(result);
     };
     fetchData();
   }, []);
+  
 
   if (loading) {
     return (
@@ -50,20 +51,22 @@ const AllProduct = () => {
         style={{ marginTop: 90, marginLeft: 200 }}
       >
         <h1 style={{ marginLeft: 450 }}>Product</h1>
-        {product.data.data.map((Project) => (
+        {product.data.product.map((Project) => (
           <div class="card col-3" style={{ margin: 20 }}>
-            <img
+            {/* <img
               class="card-img-top"
               src="https://www.w3schools.com/images/picture.jpg"
-            ></img>
+            ></img> */}
             <h5 class="card-title" className="mt-3">
               {Project.name}
+            </h5>
+            <h5 class="card-title" className="mt-3">
+              {"Rs."+Project.price}
             </h5>
             <p class="card-text">{Project.description}</p>
             <Button variant="primary" className="my-3 mx-9" onClick={showModal}>
               Add To Cart
             </Button>
-
             <Modal
               title={Project.name}
               centered
@@ -93,15 +96,18 @@ const AllProduct = () => {
                   Reset
                 </Button>
               </Space>
-              <Button variant="primary" className=" ml-28">
+              {/* <Button variant="primary" className=" ml-28">
                 Add To Cart
-              </Button>
+              </Button> */}
               <Button variant="outline-primary" className=" ml-3" onClick={handleCancel}>
                 Cancel
               </Button>
               </div>
-              
             </Modal>
+           
+            <Button variant="primary" className="my-3 mx-9" href="http://localhost:3000/discount">
+              Get Discount
+            </Button>
           </div>
         ))}
       </div>
