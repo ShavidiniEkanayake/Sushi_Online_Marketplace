@@ -3,12 +3,16 @@ import { Modal, InputNumber, Space } from "antd";
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const AllProduct = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [product, setProduct] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -25,11 +29,16 @@ const AllProduct = () => {
       const result = await axios("http://localhost:3001/api/product/getall");
       setProduct(result);
       setLoading(false);
-      console.log(result);
+      console.log(product.data.product.price);
     };
     fetchData();
   }, []);
   
+  const navigateDiscount = (product_id,price) => {
+    navigate(`/discount/${product_id}/${price}`, {
+      state: {},
+    });
+  };
 
   if (loading) {
     return (
@@ -96,16 +105,16 @@ const AllProduct = () => {
                   Reset
                 </Button>
               </Space>
-              {/* <Button variant="primary" className=" ml-28">
-                Add To Cart
-              </Button> */}
+             
               <Button variant="outline-primary" className=" ml-3" onClick={handleCancel}>
                 Cancel
               </Button>
               </div>
             </Modal>
            
-            <Button variant="primary" className="my-3 mx-9" href="http://localhost:3000/discount">
+            <Button variant="primary" className="my-3 mx-9" onClick={() => {
+                                      navigateDiscount(Project._id,Project.price);
+                                    }} disabled={Project.price<1000}>
               Get Discount
             </Button>
           </div>

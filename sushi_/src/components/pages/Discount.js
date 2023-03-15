@@ -4,6 +4,7 @@ import { EyeTwoTone, EyeInvisibleOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "react-notifications/lib/notifications.css";
+import { useParams } from "react-router-dom";
 import {
   NotificationContainer,
   NotificationManager,
@@ -16,6 +17,7 @@ const AllProduct = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [passwordVisible, setPasswordVisible] = React.useState(false);
 
+  const { product_id,price } = useParams();
   // const [loading, setLoading] = useState(true);
   // const [error, setError] = useState(false);
   const [disProduct, setDisProduct] = useState([]);
@@ -32,7 +34,7 @@ const AllProduct = () => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        "http://localhost:3001/api/product/viewone/?product_id=64083315c71ac6e5099973e9"
+        `http://localhost:3001/api/product/viewone/?product_id=${product_id}`
       );
       setProduct(result);
       setLoading(false);
@@ -41,7 +43,7 @@ const AllProduct = () => {
 
     const fetchDiscount = async () => {
       const discount = await axios(
-        "http://localhost:3001/api/discount/newdiscount/?product_id=64083315c71ac6e5099973e9&userId=640890c6552730c892306780"
+        `http://localhost:3001/api/discount/newdiscount/?product_id=${product_id}`
       );
       setDiscount(discount);
       console.log(discount);
@@ -51,7 +53,7 @@ const AllProduct = () => {
 
   const calculateDiscount = async () => {
     const result = await axios.put(
-      "http://localhost:3001/api/discount/calDiscount/?product_id=64083315c71ac6e5099973e9&price=1000"
+      `http://localhost:3001/api/discount/calDiscount/?product_id=${product_id}&price=${price}`
     );
     setDisProduct(result);
   };
@@ -63,12 +65,13 @@ const AllProduct = () => {
         pass: password,
       }
     );
-    // console.log("ss" + result.message);
+
     if (result.status == 200) {
       NotificationManager.success("Your passowrd is correct.");
       setTimeout(() => {}, 200000);
-        window.location = "http://localhost:3000/discount";
-    } else if (result.status == 400) {
+      window.location = `http://localhost:3000/discount/${product_id}/${price}`;
+    } 
+    else if (result.status == 400) {
       NotificationManager.error("Please Enter correct password");
     }
   };
@@ -141,10 +144,6 @@ const AllProduct = () => {
                 ))}
               </div>
             </div>
-
-            {/* <div className="card col-3 mt-96 mb-10" >
-              
-            </div> */}
           </div>
         ))}
       </div>

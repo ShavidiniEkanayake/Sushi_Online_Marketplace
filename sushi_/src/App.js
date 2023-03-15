@@ -26,7 +26,7 @@ function App() {
           <Route excat path="/register" element={<Register/>} />
           <Route excat path="/logIn" element={<LogIn/>} />
           <Route excat path="/buyerProfile" element={<BuyerProfile/>} />
-          <Route excat path="/discount" element={<Discount/>}/>
+          <Route excat path="/discount/:product_id/:price" element={<Discount/>}/>
           </Routes>
           <Footer/>
 
